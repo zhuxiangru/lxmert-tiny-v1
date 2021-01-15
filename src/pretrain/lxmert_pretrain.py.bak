@@ -12,7 +12,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 
 from param import args
-from pretrain.lxmert_data import InputExample, LXMERTDataset, LXMERTTorchDataset, LXMERTEvaluator, TINY_IMG_NUM, FAST_IMG_NUM
+from pretrain.lxmert_data import InputExample, LXMERTDataset, LXMERTTorchDataset, LXMERTEvaluator
 from lxrt.entry import set_visual_config
 from lxrt.tokenization import BertTokenizer
 from lxrt.modeling import LXRTPretraining
@@ -44,14 +44,8 @@ def get_tuple(splits: str, bs: int, shuffle=False, drop_last=False, topk=-1) -> 
 
 
 train_tuple = get_tuple(args.train, args.batch_size, shuffle=True, drop_last=True)
-#valid_batch_size = 2048 if args.multiGPU else 512
-valid_batch_size = args.batch_size * 2
+valid_batch_size = 2048 if args.multiGPU else 512
 valid_tuple = get_tuple(args.valid, valid_batch_size, shuffle=False, drop_last=False, topk=5000)
-#if args.tiny:
-#    topk=TINY_IMG_NUM
-#elif args.fast:
-#    topk=FAST_IMG_NUM
-#valid_tuple = get_tuple(args.valid, valid_batch_size, shuffle=False, drop_last=False, topk=topk)
 
 
 class InputFeatures(object):
@@ -336,8 +330,6 @@ class LXMERT:
             uid2ans = {}
             for batch in tqdm(train_ld, total=len(train_ld)):
                 loss, losses, logit = self.train_batch(optim, batch)
-                #print (loss)
-                #print (type(losses))
                 total_loss += loss
                 total_losses += losses
 
@@ -350,11 +342,7 @@ class LXMERT:
 
             print("The training loss for Epoch %d is %0.4f" % (epoch, total_loss / batch_per_epoch))
             losses_str = "The losses are "
-            print (total_losses)
-            print (type(total_losses))
             for name, loss in zip(LOSSES_NAME, total_losses):
-                #print (loss)
-                #print (type(loss))
                 losses_str += "%s: %0.4f " % (name, loss / batch_per_epoch)
             print(losses_str)
             if args.task_qa:

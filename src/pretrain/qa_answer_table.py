@@ -96,7 +96,11 @@ def load_lxmert_qa(path, model, label2ans):
     """
     print("Load QA pre-trained LXMERT from %s " % path)
     loaded_state_dict = torch.load("%s_LXRT.pth" % path)
+    #print (loaded_state_dict.keys())
+    #print (len(loaded_state_dict.keys()))
     model_state_dict = model.state_dict()
+    #print (model_state_dict.keys())
+    #print (len(model_state_dict.keys()))
 
     # Handle Multi-GPU pre-training --> Single GPU fine-tuning
     for key in list(loaded_state_dict.keys()):
@@ -144,6 +148,12 @@ def load_lxmert_qa(path, model, label2ans):
     # Load Bert Weights
     bert_model_keys = set(model.lxrt_encoder.model.state_dict().keys())
     bert_loaded_keys = set(bert_state_dict.keys())
+    #print (bert_model_keys)
+    #print (len(bert_model_keys))
+    #print (bert_loaded_keys)
+    #print (len(bert_loaded_keys))
+    #print (bert_model_keys - bert_loaded_keys)
+    #print (len(bert_model_keys - bert_loaded_keys))
     assert len(bert_model_keys - bert_loaded_keys) == 0
     model.lxrt_encoder.model.load_state_dict(bert_state_dict, strict=False)
 

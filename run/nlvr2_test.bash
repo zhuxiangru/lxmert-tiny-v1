@@ -10,5 +10,5 @@ cp $0 $output/run.bash
 # See Readme.md for option details.
 CUDA_VISIBLE_DEVICES=$1 PYTHONPATH=$PYTHONPATH:./src \
     python src/tasks/nlvr2.py \
-    --tiny --llayers 9 --xlayers 5 --rlayers 5 \
+    --tiny --llayers 4 --xlayers 2 --rlayers 2 \
     --tqdm --output $output ${@:3}

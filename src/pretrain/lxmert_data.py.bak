@@ -91,8 +91,6 @@ class LXMERTTorchDataset(Dataset):
         self.raw_dataset = dataset
         self.task_matched = args.task_matched
 
-        print ("tiny=", args.tiny)
-        print ("fast=", args.fast)
         if args.tiny:
             topk = TINY_IMG_NUM
         elif args.fast:

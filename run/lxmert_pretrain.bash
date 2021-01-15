@@ -14,8 +14,8 @@ CUDA_VISIBLE_DEVICES=$1 PYTHONPATH=$PYTHONPATH:./src \
     --visualLosses obj,attr,feat \
     --wordMaskRate 0.15 --objMaskRate 0.15 \
     --train mscoco_train,mscoco_nominival,vgnococo --valid mscoco_minival \
-    --llayers 9 --xlayers 5 --rlayers 5 \
+    --llayers 4 --xlayers 2 --rlayers 2 \
     --fromScratch \
-    --batchSize 256 --optim bert --lr 1e-4 --epochs 20 \
+    --batchSize 64 --optim bert --lr 1e-4 --epochs 20 \
     --tqdm --output $output ${@:2}
 
