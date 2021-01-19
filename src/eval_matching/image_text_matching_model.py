@@ -9,39 +9,39 @@ from lxrt.entry import convert_sents_to_features
 from param import args
 
 
-class ImageTextMatchingModel(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.lxrt_encoder = LXRTEncoder(args, max_seq_length=20, mode='xlr')
+# class ImageTextMatchingModel(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.lxrt_encoder = LXRTEncoder(args, max_seq_length=20, mode='xlr')
         
-        # self.hid_dim = hid_dim = self.lxrt_encoder.dim
-        # self.logit_fc = nn.Sequential(
-        #     nn.Linear(hid_dim * 2, hid_dim * 2),
-        #     GeLU(),
-        #     BertLayerNorm(hid_dim * 2, eps=1e-12),
-        #     nn.Linear(hid_dim * 2, 2)
-        # )
-        # self.logit_fc.apply(self.lxrt_encoder.model.init_bert_weights)
+#         # self.hid_dim = hid_dim = self.lxrt_encoder.dim
+#         # self.logit_fc = nn.Sequential(
+#         #     nn.Linear(hid_dim * 2, hid_dim * 2),
+#         #     GeLU(),
+#         #     BertLayerNorm(hid_dim * 2, eps=1e-12),
+#         #     nn.Linear(hid_dim * 2, 2)
+#         # )
+#         # self.logit_fc.apply(self.lxrt_encoder.model.init_bert_weights)
 
-    def forward(self, feat, pos, sent):
-        """
-        b -- batch_size, o -- object_number, f -- visual_feature_size
+#     def forward(self, feat, pos, sent):
+#         """
+#         b -- batch_size, o -- object_number, f -- visual_feature_size
 
-        :param feat: (b, o, f)
-        :param pos:  (b, o, 4)
-        :param sent: b, (string)
-        :param leng: b, (numpy, int)
-        :return:
-        """
+#         :param feat: (b, o, f)
+#         :param pos:  (b, o, 4)
+#         :param sent: b, (string)
+#         :param leng: b, (numpy, int)
+#         :return:
+#         """
 
-        # Extract feature --> Concat
-        (lang_output, visn_output), pooled_output = self.lxrt_encoder(sent, (feat, pos))
-        inner_product = self.inner_product(lang_output, pooled_output)
+#         # Extract feature --> Concat
+#         (lang_output, visn_output), pooled_output = self.lxrt_encoder(sent, (feat, pos))
+#         inner_product = self.inner_product(lang_output, pooled_output)
 
-        logit = self.logit_fc(inner_product)
+#         logit = self.logit_fc(inner_product)
 
 
-        return logit
+#         return logit
 
 def set_visual_config(args):
     VISUAL_CONFIG.l_layers = args.llayers

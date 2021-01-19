@@ -1,0 +1,101 @@
+[
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "yes": 1
+        }, 
+        "question_id": 262144000, 
+        "question_type": "is this a", 
+        "original_sent": "Is this a batter?",
+        "sent": "These man are batters.",
+        "ground": "True"
+    },
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "no": 1
+        }, 
+        "question_id": 262144001, 
+        "question_type": "is this a", 
+        "original_sent": "Is this a swimmer?",
+        "sent": "These man are swimmers.",
+        "ground": "False"
+    },
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "no": 1
+        }, 
+        "question_id": 262144002, 
+        "question_type": "is this a", 
+        "original_sent": "Is this a firefighter?",
+        "sent": "These man are firefighters.",
+        "ground": "False"
+    },
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "yes": 1
+        }, 
+        "question_id": 262144003, 
+        "question_type": "is this a", 
+        "original_sent": "Is the ball flying towards the batter?",
+        "sent": "The ball is flying towards the batter.",
+        "ground": "True"
+    },
+    {
+        "answer_type": "other", 
+        "img_id": "COCO_train2014_000000150435", 
+        "label": {
+            "business": 0.3,
+            "not possible": 0.3
+        }, 
+        "question_id": 262144004, 
+        "question_type": "none of the above", 
+        "original_sent": "In what profession are the people in white?",
+        "sent": "The people in white are businessman.",
+        "ground": "True"
+    },
+    {
+        "answer_type": "other", 
+        "img_id": "COCO_train2014_000000115604", 
+        "label": {
+            "baking": 0.3,
+            "chef": 0.6,
+            "cooking": 0.6
+        }, 
+        "question_id": 262144005, 
+        "question_type": "none of the above", 
+        "original_sent": "In what profession are the people in white?",
+        "sent": "These people in white are chefs.",
+        "ground": "True"
+    },
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "yes": 1
+        }, 
+        "question_id": 262144006, 
+        "question_type": "is this a", 
+        "original_sent": "Is this a batter?",
+        "sent": "These man are sportsman.",
+        "ground": "True"
+    },
+    {
+        "answer_type": "yes/no", 
+        "img_id": "COCO_test2015_000000262144", 
+        "label": {
+            "yes": 1
+        }, 
+        "question_id": 262144007, 
+        "question_type": "is this a", 
+        "original_sent": "Is this a batter?",
+        "sent": "There are a couple of baseball players.",
+        "ground": "True"
+    }
+]
