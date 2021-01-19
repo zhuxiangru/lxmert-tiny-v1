@@ -223,14 +223,14 @@ class LXMERT:
         self.max_seq_length = max_seq_length
 
         self.tokenizer = BertTokenizer.from_pretrained(
-            "bert-base-uncased",
+            "./model/bert-base-uncased/",
             do_lower_case=True
         )
 
         # Build model
         set_visual_config(args)
         self.model = LXRTPretraining.from_pretrained(
-            "bert-base-uncased",
+            "./model/bert-base-uncased/",
             task_mask_lm=args.task_mask_lm,
             task_obj_predict=args.task_obj_predict,
             task_matched=args.task_matched,

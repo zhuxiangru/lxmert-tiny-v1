@@ -23,6 +23,8 @@ import torch.nn as nn
 from lxrt.tokenization import BertTokenizer
 from lxrt.modeling import LXRTFeatureExtraction as VisualBertForLXRFeature, VISUAL_CONFIG
 
+_DEBUG = False
+
 
 class InputFeatures(object):
     """A single set of features of data."""
@@ -83,15 +85,18 @@ class LXRTEncoder(nn.Module):
         self.max_seq_length = max_seq_length
         set_visual_config(args)
 
+        # debug option
+        _DEBUG = args.debug
+
         # Using the bert tokenizer
         self.tokenizer = BertTokenizer.from_pretrained(
-            "bert-base-uncased",
+            "./model/bert-base-uncased/",
             do_lower_case=True
         )
 
         # Build LXRT Model
         self.model = VisualBertForLXRFeature.from_pretrained(
-            "bert-base-uncased",
+            "./model/bert-base-uncased/",
             mode=mode
         )
 
@@ -107,10 +112,12 @@ class LXRTEncoder(nn.Module):
         return 768
 
     def forward(self, sents, feats, visual_attention_mask=None):
+        # print (sents)
         train_features = convert_sents_to_features(
             sents, self.max_seq_length, self.tokenizer)
 
         input_ids = torch.tensor([f.input_ids for f in train_features], dtype=torch.long).cuda()
+        # print (input_ids)
         input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long).cuda()
         segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long).cuda()
 
@@ -127,6 +134,8 @@ class LXRTEncoder(nn.Module):
         # Load state_dict from snapshot file
         print("Load LXMERT pre-trained model from %s" % path)
         state_dict = torch.load("%s_LXRT.pth" % path)
+        # print (state_dict.keys())
+
         new_state_dict = {}
         for key, value in state_dict.items():
             if key.startswith("module."):

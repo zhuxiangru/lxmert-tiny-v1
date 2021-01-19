@@ -505,8 +505,13 @@ class VisualFeatEncoder(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
     def forward(self, visn_input):
+        #print ("visn_input=", visn_input)
         feats, boxes = visn_input
 
+        # print ("feat_dim", VISUAL_CONFIG.visual_feat_dim)
+        # print ("pos_dim", VISUAL_CONFIG.visual_pos_dim)
+        # print (feats.shape)
+        # print (boxes.shape)
         x = self.visn_fc(feats)
         x = self.visn_layer_norm(x)
         y = self.box_fc(boxes)
@@ -548,6 +553,9 @@ class LXRTEncoder(nn.Module):
         # Run visual embedding layer
         # Note: Word embedding layer was executed outside this module.
         #       Keep this design to allow loading BERT weights.
+        # print ("visn_feats=", len(visn_feats))
+        # print (visn_feats[0].shape)
+        # print (visn_feats[1].shape)
         visn_feats = self.visn_fc(visn_feats)
 
         # Run language layers

@@ -51,6 +51,7 @@ def parse_args():
     parser.add_argument("--fast", action='store_const', default=False, const=True)
     parser.add_argument("--tiny", action='store_const', default=False, const=True)
     parser.add_argument("--tqdm", action='store_const', default=False, const=True)
+    parser.add_argument("--debug", action='store_const', default=False, const=True)
 
     # Model Loading
     parser.add_argument('--load', type=str, default=None,
