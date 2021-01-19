@@ -1,5 +1,8 @@
 # lxmert-tiny-v1
 
+在lxmert原版模型上修改以及测评。
+原版：https://github.com/airsplay/lxmert
+
 # 已经抽取出obj feature && bbox + 用预训练任务的图文匹配参数task_matched
 
 ## test:
