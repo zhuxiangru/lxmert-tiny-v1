@@ -1023,4 +1023,3 @@ class LXRTFeatureExtraction(BertPreTrainedModel):
             return feat_seq, pooled_output
         elif 'l' in self.mode or 'r' in self.mode:
             return feat_seq
-
