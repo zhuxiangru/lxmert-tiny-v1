@@ -37,6 +37,6 @@ python demo/demo_test_vqa.py
 
 注意，这里如果用test, 则tsv文件会读取整个test2015_obj36.tsv，太大了，时间较长
 
-"""
+```
 bash run/image_text_matching_test.bash 0 image_text_matching_lxr422_results  --test test    
-"""
+```
