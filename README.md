@@ -25,8 +25,13 @@ bash run/image_text_matching_test.bash 0 image_text_matching_lxr955_results  --t
 ```
 cd lxmert
 
-bash run/image_text_matching_test_cos.bash 0 image_text_matching_lxr955_results  --test matching_test
+bash run/image_text_matching_test_cos_base.bash 0 image_text_matching_lxr955_results  --test matching_test
 ```
+```
+cd lxmert
+bash run/image_text_matching_test_cos_vqa.bash 0 image_text_matching_lxr955_results  --test matching_test
+```
+
 或者
 ### test: （用预训练后的LXRTModel,不包含四个预训练任务的参数）base model
 ```
